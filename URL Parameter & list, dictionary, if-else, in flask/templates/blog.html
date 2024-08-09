@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block konten %}
+    <h1 style="color:gold">BLOG PAGE</h1>
+
+<b>Hari hari coding :</b>
+
+<ul>
+    {% for day in DayCoding %}
+    <li>{{ day }}</li>
+    {% endfor %}
+</ul>
+
+<hr>
+{% for data in Datas %}
+<h1>{{ data.judul }}</h1>
+<i>{{ data.tanggal }}</i>
+<p>{{ data.isi }}</p>
+{% endfor %}
+
+<hr>
+
+<p>Apakah hari ini 17 Agustus ?</p>
+{% if day == 17 and month == 8 %}
+<h1>MERDEKA...🎆✨🎇</h1>
+{% else %}
+<p>tidak !</p>
+{% endif %}
+
+{% endblock %}
