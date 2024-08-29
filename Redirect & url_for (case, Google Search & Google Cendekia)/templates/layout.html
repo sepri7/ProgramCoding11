@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>MyTester</title>
+    <!-- <style>
+        * {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body{
+    background-color: orange;
+}
+    </style> -->
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename ='img/bird.png') }}" title="bird" >
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('gc') }}">Cendikia-Ku</a></li>
+        </ul>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

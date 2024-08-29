@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    
+    <main>
+        <img src="https://scholar.google.co.id/intl/id/scholar/images/1x/scholar_logo_64dp.png" >
+           
+        <form action="{{ url_for('action_gc' ) }}" id ="cari" method="post" target="_blank" >
+            <input type="text" name="keyword" > <span><a href="#" onclick="document.getElementById('cari').submit();">🔍</a></span>
+        </form>
+
+    </main>
+
+{% endblock %}

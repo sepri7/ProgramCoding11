@@ -1,0 +1,39 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body{
+    background-color: rgb(191, 190, 200);
+}
+
+header{
+    text-align: center;
+}
+
+header img{
+    width: 200px;
+}
+
+header ul{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+header li{
+    padding: 15px;
+    font-size: 25px;
+}
+
+header a{
+    text-decoration: none;
+}
+
+header a:hover{
+    background-color: blue;
+    color: aliceblue;
+}
+
+
