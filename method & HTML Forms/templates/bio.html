@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <header>
+        <h1><u>DATA BIODATA</u></h1>
+        <img src="{{ url_for('static', filename='ft.png') }}" alt="">
+        <hr>
+    </header>
+
+    <main>
+       <p>
+        <b>NamaKu</b><br>
+        {{ nama }}
+       </p>
+
+       <p>
+        <b>Kelas:</b><br>
+        {{ kelas }}
+       </p>
+
+       <p>
+        <b>email:</b><br>
+        {{ email }}
+       </p>
+
+       <p>
+        <b>Tempat, Tanggal Lahir:</b><br>
+        {{ tempat }}, {{ tgl }}
+       </p>
+       
+       <p>
+        <b>cita_cita:</b><br>
+        {{ cita_cita }}
+       </p>
+       
+       <p>
+        <b>agama:</b><br>
+        {{ agama }}
+       </p>
+       
+       <p>
+        <b>tentang:</b><br>
+        {{ tentang }}
+       </p>
+
+    </main>
+
+{% endblock %}

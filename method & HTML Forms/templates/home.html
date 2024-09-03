@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <header>
+        <h1><u>BIODATA</u></h1>
+    </header>
+
+    <main>
+        <form action="{{ url_for('aksi' ) }}" method="post" >
+            <label for="nama">Nama :</label>
+            <input name="nama" type="text" id="nama" placeholder="Masukkan nama..." required >
+            
+            <label for="kelas">Kelas :</label>
+            <input name="kelas" type="number" min="10" max="12" placeholder="Masukkan kelas..." required >
+
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" required >
+            
+            <fieldset>
+                <legend>Tempat, Tanggal Lahir</legend>
+                <label for="tempat">Tempat :</label>
+                <input type="text" name="tempat" id="tempat" required >
+
+                <label for="tgl">Tanggal Lahir :</label>
+                <input type="date" name="tgl" id="tgl" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Cita-cita :</legend>
+                <label for="programmer">programmer :</label>
+                <input type="radio" name="cita_cita" id="programmer" value="programmer" >
+                <label for="bukan_programmer">bukan programmer :</label>
+                <input type="radio" name="cita_cita" id="bukan_programmer" value="bukan programmer" >
+            </fieldset>
+
+            <label for="agama">Agama :</label>
+            <select name="agama" required >
+                <option value="islam">islam</option>
+                <option value="hindu">hindu</option>
+                <option value="budha">budha</option>
+                <option value="katolik">katolik</option>
+                <option value="kristen">kristen</option>
+                <option value="konghucu">konghucu</option>
+            </select>
+            
+            <label for="tentang">TentangKu :</label>
+            <textarea name="tentang" id="tentang" placeholder="Tentang kamu...." required></textarea>
+            <button type="submit"> KIRIM </button>
+        </form>
+    </main>
+
+{% endblock %}
