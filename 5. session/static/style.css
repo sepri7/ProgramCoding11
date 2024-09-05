@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+section{
+    background-color: aqua;
+    width: 40%;
+    margin: 20vh auto;
+    padding: 20px;
+}
+
+section form input{
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+}
+
+button{
+    padding: 5px 10px ;
+}
