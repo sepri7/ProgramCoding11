@@ -1,14 +1,17 @@
 from flask import *
-from flask_mysqldb import *
+import mysql.connector
 
 app = Flask(__name__)
 
-app.config["MYSQL_HOST"] = "localhost"
-app.config["MYSQL_DB"] = "sekolah"
-app.config["MYSQL_USER"] = "root"
-app.config["MYSQL_PASSWORD"] = ""
+# Connect to server
+cnx = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    database="sekolah",
+    password="")
 
-mysql = MySQL(app)
+# Get a cursor
+cur = cnx.cursor()
 
 @app.route('/')
 @app.route('/home')
@@ -20,39 +23,35 @@ def simpan():
     nama = request.form["nama"]
     kelas = request.form["kelas"]
     alamat = request.form["alamat"]
-    cursor = mysql.connection.cursor()
     query = ("insert into siswa values( %s, %s, %s, %s)")
     data = ( "", nama, kelas, alamat )
-    cursor.execute( query, data )
-    mysql.connection.commit()
-    cursor.close()
+    cur.execute( query, data )
+    cnx.commit()
+    cur.close()
     return f"sukses disimpan.."
 
 @app.route('/tampil')
 def tampil():
-    cursor = mysql.connection.cursor()
-    cursor.execute("select * from siswa")
-    data = cursor.fetchall()
-    cursor.close()
+    cur.execute("select * from siswa")
+    data = cur.fetchall()
+    cur.close()
     return render_template('tampil.html',data=data) 
 
 @app.route('/hapus/<id>')
 def hapus(id):
-    cursor = mysql.connection.cursor()
     query = ("delete from siswa where id = %s")
     data = (id,)
-    cursor.execute( query, data )
+    cur.execute( query, data )
     mysql.connection.commit()
-    cursor.close()
+    cur.close()
     return redirect('/tampil')
 
 @app.route('/update/<id>')
 def update(id):
-    cursor = mysql.connection.cursor()
     sql = ("select * from siswa where id = %s")
     data = (id,)
-    cursor.execute( sql, data )
-    value = cursor.fetchone()
+    cur.execute( sql, data )
+    value = cur.fetchone()
     return render_template('update.html',value=value) 
 
 
@@ -62,14 +61,12 @@ def aksiupdate():
     nama = request.form["nama"]
     kelas = request.form["kelas"]
     alamat = request.form["alamat"]
-    cursor = mysql.connection.cursor()
     query = ("update siswa set nama = %s, kelas = %s, alamat = %s where id = %s")
     data = ( nama, kelas, alamat,id, )
-    cursor.execute( query, data )
+    cur.execute( query, data )
     mysql.connection.commit()
-    cursor.close()
+    cur.close()
     return redirect('/tampil')
-
 
 if __name__ == "__main__":
     app.run(debug=True)
