@@ -1,12 +1,23 @@
 {% extends 'layout.html' %}
 
 {% block konten %}
-    <table>
-        <tr>
-            <td>NAMA</td>
-            <td>KELAS</td>
-            <td>ALAMAT</td>
-            <td>OPSI</td>
+    <table border="1">
+        <tr> 
+            <th>NAMA</th>
+            <th>KELAS</th>
+            <th>ALAMAT</th>
+            <th>OPSI</th>
         </tr>
+
+        {% for result in data %}
+        <tr>
+            <td>{{ result[1] }}</td>
+            <td>{{ result[2] }}</td>
+            <td>{{ result[3] }}</td>
+            <td> <a href="/update/{{ result[0] }}">UPDATE</a> - <a href="/hapus/{{ result[0] }}">DELETE</a> </td>
+        </tr>
+        {% endfor %}
+
+
     </table>
 {% endblock %}
